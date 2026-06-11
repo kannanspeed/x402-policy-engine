@@ -1,0 +1,21 @@
+# x402 Policy Engine — Dependencies
+
+# Core
+web3>=6.0.0
+eth-account>=0.9.0
+eth-abi>=4.0.0
+
+# x402
+httpx>=0.25.0
+
+# Dashboard
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Utilities
+python-dotenv>=1.0.0

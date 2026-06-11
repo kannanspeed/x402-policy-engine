@@ -1,0 +1,101 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "x402-policy"
+version = "0.2.0"
+description = "Policy engine for autonomous AI agent x402 micro-payments with ERC-8004 trust scoring"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [
+    { name = "x402 Policy Engine", email = "hello@x402-policy.dev" }
+]
+keywords = [
+    "x402",
+    "erc-8004",
+    "ethereum",
+    "ai-agents",
+    "micro-payments",
+    "web3",
+    "account-abstraction",
+    "eip-4337",
+    "eip-3009",
+    "usdc",
+    "base",
+    "arbitrum",
+    "optimism",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Security",
+]
+
+dependencies = [
+    "web3>=6.0.0",
+    "eth-account>=0.9.0",
+    "eth-abi>=4.0.0",
+    "httpx>=0.25.0",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+]
+dashboard = [
+    "aiosqlite>=0.19.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://x402-policy.dev"
+Documentation = "https://x402-policy.dev/docs"
+Repository = "https://github.com/x402-policy/x402-policy-engine"
+Changelog = "https://github.com/x402-policy/x402-policy-engine/blob/main/CHANGELOG.md"
+
+[project.scripts]
+x402-policy-cli = "x402_policy.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src",
+    "README.md",
+    "LICENSE",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
